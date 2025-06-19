@@ -64,7 +64,7 @@ Auto offset calibration
 10x sensitivity multiplier
 #
 #
-🔧 **Recommended Amplifier Circuit**
+🔧 **Recommended Amplifier Circuit:**
 
 INA128 or AD620-based instrumentation amplifier
 
