@@ -16,5 +16,6 @@ App(
     fap_description="Advanced bioelectrical monitor with automatic hardware detection and calibration",
     fap_author="Hack the Planet Team",
     fap_version="2.0",
-    fap_icon_assets="icons",
+    fap_icon_assets="icons",  # main icon
+    fap_icon_assets           # directory
 )
