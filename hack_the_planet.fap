@@ -1,5 +1,0 @@
-# Clone the firmware repo
-git clone https://github.com/flipperdevices/flipperzero-firmware.git
-cd flipperzero-firmware
-./fbt fap_hack_the_planet         # This compiles your app
-./fbt launch_app APPID=hack_the_planet  # This launches it directly
