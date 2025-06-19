@@ -104,15 +104,15 @@ Build:
 
 4. The app will automatically:
 
-5. Detect configuration
+      Detect configuration
 
-6. Calibrate if necessary
+      Calibrate if necessary
 
-7. Apply proper sensitivity
+      Apply proper sensitivity
 
-8. Press OK to begin monitoring
+5. Press OK to begin monitoring
 
-9. Monitoring States:
+6. Monitoring States:
 
     DETECTING – Hardware auto-detection (~2 sec)
 
