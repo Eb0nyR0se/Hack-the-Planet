@@ -27,7 +27,7 @@ Configuration 1: Direct Connection (Basic)
 
 Use for: Learning, experimentation, high-voltage signals
 #
-Connections:
+GPIO Connections:
 
 Pin 4 (PA4) → Electrode A (Positive)
 
@@ -45,7 +45,7 @@ Configuration 2: Amplifier Board (Advanced)
 #
 Use for: Sensitive measurements, plant monitoring, research
 #
-GPIO Connections:
+Amplifier Board GPIO Connections:
 
 Pin 2 (PA7) → Amplifier Output
 
