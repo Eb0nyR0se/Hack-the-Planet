@@ -112,41 +112,41 @@ Build:
 
 8. Press OK to begin monitoring
 
-9. Monitoring States
+9. Monitoring States:
 
-   *DETECTING – Hardware auto-detection (~2 sec)
+    DETECTING – Hardware auto-detection (~2 sec)
 
-   *CALIBRATING – Amplifier offset tuning
+    CALIBRATING – Amplifier offset tuning
 
-   *READY – Waiting for user
+    READY – Waiting for user
 
-   *MONITORING – Active signal analysis with audio
+    MONITORING – Active signal analysis with audio
 
-   *ERROR – Retry/recover from ADC issues
+    ERROR – Retry/recover from ADC issues
 #
 #
 🌿 **Electrode Applications:**
 
--Plants
+Plants
 
--Ideal for pothos, philodendron, rubber plants
+Ideal for pothos, philodendron, rubber plants
 
--Clean electrode surfaces before use
+Clean electrode surfaces before use
 
--Attach to leaves or stems
+Attach to leaves or stems
 
--Plants may respond to touch, music, light, etc.
+Plants may respond to touch, music, light, etc.
 #
 #
 **Other Uses:**
 
--Galvanic Skin Response (GSR)
+Galvanic Skin Response (GSR)
 
--Electrolyte conductivity
+Electrolyte conductivity
 
--Bioelectricity demos
+Bioelectricity demos
 
--Fruit/vegetable measurements
+Fruit/vegetable measurements
 #
 #
 📊 **Technical Specifications:**
