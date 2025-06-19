@@ -1,7 +1,8 @@
-# Hack the Planet 
+**# Hack the Planet **
 Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by dynamic audio feedback.
 
-🔑 Key Features
+
+🔑 **Key Features:**
 
 🔍 Intelligent Hardware Detection – Automatically detects amplifier boards vs direct connections
 
@@ -19,7 +20,8 @@ Transform your Flipper Zero into a professional-grade bioelectrical activity mon
 
 📱 State Machine Architecture – Reliable operation with built-in error recovery
 
-🧩 Hardware Configurations
+
+🧩 **Hardware Configurations:**
 
 Configuration 1: Direct Connection (Basic)
 
@@ -71,7 +73,8 @@ High input impedance (>1GΩ)
 
 Low noise, low drift
 
-🚀 Installation
+
+🚀 **Installation:**
 
 Option 1: Precompiled
 
@@ -89,7 +92,8 @@ Build:
 
 ./fbt fap_hack_the_planet ./fbt launch_app APPID=hack_the_planet
 
-🎮 Usage Guide
+
+🎮 **Usage Guide:**
 
 Getting Started
 
@@ -119,7 +123,8 @@ MONITORING – Active signal analysis with audio
 
 ERROR – Retry/recover from ADC issues
 
-🌿 Electrode Applications
+
+🌿 **Electrode Applications:**
 
 Plants
 
@@ -131,6 +136,7 @@ Attach to leaves or stems
 
 Plants may respond to touch, music, light, etc.
 
+
 Other Uses
 
 Galvanic Skin Response (GSR)
@@ -141,7 +147,8 @@ Bioelectricity demos
 
 Fruit/vegetable measurements
 
-📊 Technical Specifications
+
+📊 **Technical Specifications:**
 
 Sampling & Signal
 
@@ -161,6 +168,7 @@ Amplified: 10mV, 10x sensitivity
 
 Direct: 100mV, 1x sensitivity
 
+
 Detection Logic
 
 Amplifier: 1.5–1.8V average w/ <50mV variance
@@ -175,17 +183,19 @@ NaN/infinity protection
 
 Auto re-init and status messages
 
-🛠 Troubleshooting
+
+🛠 **Troubleshooting:**
 
 ❌ No Hardware Detected
 
-Check GPIO wiring
+Check the GPIO wiring
 
-Ensure amplifier ground is connected
+Ensure the amplifier ground is connected
 
 Detection pin PA6 must pull low
 
-⚠️ Erratic Readings
+
+⚠️ **Erratic Readings**
 
 Clean and secure electrodes
 
@@ -193,15 +203,17 @@ Avoid touching during readings
 
 Eliminate nearby EMI
 
-🔇 No Audio
 
-Confirm speaker is active
+🔇 **No Audio**
+
+Confirm the speaker is active
 
 Recheck voltage thresholds
 
 Adjust electrode placement
 
-🚫 ADC Errors
+
+🚫 **ADC Errors**
 
 Restart app
 
@@ -209,7 +221,8 @@ Check all GPIO cables
 
 Retry via OK button
 
-🔬 Scientific & Educational Uses
+
+🔬 **Scientific & Educational Uses:**
 
 Circadian rhythm & environmental studies
 
@@ -221,7 +234,8 @@ Electronic circuit & ADC training
 
 Citizen science + agriculture research
 
-💡 Advanced Architecture
+
+💡 **Advanced Architecture:**
 
 State Machine
 
@@ -237,7 +251,8 @@ Real-time frequency mapping
 
 Mode-dependent display scaling
 
-🤝 Contributing
+
+🤝 **Contributing:**
 
 We welcome pull requests and suggestions!
 
@@ -251,11 +266,13 @@ Mobile integration & export
 
 Data logging tools
 
-📜 License
+
+📜 **License:**
 
 MIT License – Open source hardware & software encouraged
 
-⚠️ Safety & Disclaimers
+
+⚠️ **Safety & Disclaimers:**
 
 ⚡ Use low voltage only (<5V)
 
