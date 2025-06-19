@@ -104,25 +104,25 @@ Build:
 #
 7. The app will automatically:
 
-      -Detect configuration
+      Detect configuration
 
-      -Calibrate if necessary
+      Calibrate if necessary
 
-      -Apply proper sensitivity
+      Apply proper sensitivity
  # 
  9. Press OK to begin monitoring
  #
 11. Monitoring States:
 
-      -DETECTING – Hardware auto-detection (~2 sec)
+       DETECTING – Hardware auto-detection (~2 sec)
 
-      -CALIBRATING – Amplifier offset tuning
+       CALIBRATING – Amplifier offset tuning
 
-      -READY – Waiting for user
+       READY – Waiting for user
 
-      -MONITORING – Active signal analysis with audio
+       MONITORING – Active signal analysis with audio
 
-      -ERROR – Retry/recover from ADC issues
+       ERROR – Retry/recover from ADC issues
 #
 #
 🌿 **Electrode Applications:**
