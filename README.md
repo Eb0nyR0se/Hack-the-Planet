@@ -252,8 +252,7 @@ Mode-dependent display scaling
 🤝 **Contributing:**
 
 I welcome pull requests and suggestions!
-
-
+#
 Focus areas:
 
 Multi-channel signal support
