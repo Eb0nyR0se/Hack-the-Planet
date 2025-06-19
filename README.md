@@ -45,7 +45,7 @@ Configuration 2: Amplifier Board (Advanced)
 #
 Use for: Sensitive measurements, plant monitoring, research
 #
-Connections:
+GPIO Connections:
 
 Pin 2 (PA7) → Amplifier Output
 
