@@ -1,4 +1,3 @@
-
 App(
     appid="hack_the_planet",
     name="Hack the Planet",
