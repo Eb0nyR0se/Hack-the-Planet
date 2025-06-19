@@ -194,7 +194,6 @@ Ensure the amplifier ground is connected
 
 Detection pin PA6 must pull low
 #
-#
 ⚠️ **Erratic Readings**
 
 Clean and secure electrodes
@@ -203,7 +202,6 @@ Avoid touching during readings
 
 Eliminate nearby EMI
 #
-#
 🔇 **No Audio**
 
 Confirm the speaker is active
@@ -211,7 +209,6 @@ Confirm the speaker is active
 Recheck voltage thresholds
 
 Adjust electrode placement
-#
 #
 🚫 **ADC Errors**
 
