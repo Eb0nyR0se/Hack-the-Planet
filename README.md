@@ -1,237 +1,268 @@
-# Hack the Planet - Flipper Zero Advanced Bioelectrical Monitor
+#Hack the Planet
 
-Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by audio feedback.
+Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by dynamic audio feedback.
 
-## Key Features
+🔑 Key Features
 
-- 🔍 **Intelligent Hardware Detection** - Automatically detects amplifier boards vs direct connections
-- 🎯 **Automatic Calibration** - Self-calibrating offset compensation for amplified signals
-- 🌱 **Dual Monitoring Modes** - Direct differential measurement and amplified signal processing
-- 🔊 **Dynamic Audio Feedback** - Frequency-mapped audio with sensitivity scaling
-- 📊 **Real-time Visualization** - Live voltage display with error indication
-- ⚡ **Robust Error Handling** - Comprehensive ADC error detection and recovery
-- 🎛️ **Adaptive Sensitivity** - Automatic threshold adjustment based on detected hardware
-- 📱 **State Machine Architecture** - Reliable operation with proper error recovery
+🔍 Intelligent Hardware Detection – Automatically detects amplifier boards vs direct connections
 
-## Hardware Configurations
+🎯 Automatic Calibration – Self-calibrating offset compensation for amplified signals
 
-### Configuration 1: Direct Connection (Basic)
-**Best for:** Learning, experimentation, high-voltage signals
-- 2x Electrodes connected directly to GPIO pins 4 & 5
-- Measures differential voltage between electrodes
-- Higher voltage threshold (0.1V) for noise immunity
-- Microvolt-level sensitivity display
+🌱 Dual Monitoring Modes – Direct differential measurement and amplified signal processing
 
-**GPIO Connections:**
-```
-Pin 4 (PA4) -> Electrode A (Positive)
-Pin 5 (PA5) -> Electrode B (Negative)
-```
+🔊 Dynamic Audio Feedback – Frequency-mapped audio with sensitivity scaling
 
-### Configuration 2: Amplifier Board (Advanced)
-**Best for:** Sensitive measurements, plant monitoring, research
-- External op-amp board for signal conditioning
-- Automatic detection via reference pin pulldown
-- Millivolt-level sensitivity with offset compensation
-- Lower voltage threshold (0.01V) for sensitive detection
+📊 Real-time Visualization – Live voltage display with error indication
 
-**GPIO Connections:**
-```
-Pin 2 (PA7) -> Amplifier Output
-Pin 3 (PA6) -> Reference/Detection Pin
-Pin 4 (PA4) -> Electrode A (via amplifier)
-Pin 5 (PA5) -> Electrode B (via amplifier)
-GND         -> Amplifier Ground
-```
+⚡ Robust Error Handling – Comprehensive ADC error detection and recovery
 
-## Recommended Amplifier Circuit
+🎛️ Adaptive Sensitivity – Threshold auto-adjustment based on detected hardware
 
-For enhanced sensitivity, use an instrumentation amplifier:
-```
-INA128 or AD620-based circuit:
-- Gain: ~100-1000x
-- High input impedance (>1GΩ)
-- Low noise, low drift
-- Reference pin tied to detection logic
-```
+📱 State Machine Architecture – Reliable operation with built-in error recovery
 
-## Installation
+🧩 Hardware Configurations
 
-1. Download the latest `.fap` file from releases
-2. Copy to your Flipper Zero's `apps/GPIO/` folder via qFlipper
-3. Alternatively, compile from source (see Building section)
+Configuration 1: Direct Connection (Basic)
 
-## Usage
+Use for: Learning, experimentation, high-voltage signals
 
-### Getting Started
-1. Connect your electrodes (direct or via amplifier)
-2. Launch "Hack the Planet" from the GPIO apps menu
-3. The app will automatically:
-   - Detect your hardware configuration
-   - Calibrate amplifier offset (if detected)
-   - Set appropriate sensitivity and thresholds
-4. Select "Start Monitoring" to begin
+Connections:
 
-### Monitoring Process
-- **Detection Phase**: Hardware auto-detection (~2 seconds)
-- **Calibration Phase**: Automatic offset calibration for amplifiers
-- **Ready State**: System prepared for monitoring
-- **Monitoring State**: Active signal measurement with audio feedback
-- **Error Recovery**: Automatic retry on ADC failures
+Pin 4 (PA4) → Electrode A (Positive)
 
-### Electrode Applications
+Pin 5 (PA5) → Electrode B (Negative)
 
-**Plant Monitoring:**
-- Large-leafed plants (pothos, philodendron, rubber plants)
-- Clean electrodes with alcohol before attachment
-- Place on different leaves or stem sections
-- Plants may respond to touch, light, music, or environmental changes
+Features:
 
-**Other Applications:**
-- Galvanic skin response (GSR) monitoring
-- Electrolyte solution conductivity
-- Fruit and vegetable electrical activity
-- Educational demonstrations of bioelectricity
+Measures differential voltage
 
-## Technical Specifications
+High noise immunity (0.1V threshold)
 
-### Sampling & Processing
-- **Sample Rate**: 20Hz (50ms intervals)
-- **ADC Resolution**: 12-bit (4096 levels)
-- **Voltage Range**: 0-3.3V reference
-- **Buffer Size**: 128 samples for baseline calculation
-- **Frequency Range**: 50-2000Hz audio output
+Displays in microvolts (µV)
 
-### Detection Thresholds
-- **Amplified Mode**: 10mV threshold, 10x sensitivity multiplier
-- **Direct Mode**: 100mV threshold, 1x sensitivity multiplier
-- **Amplifier Detection**: 1.5-1.8V stable signal with <50mV variance
+Configuration 2: Amplifier Board (Advanced)
 
-### Error Handling
-- Multiple ADC read attempts with retry logic
-- Voltage bounds checking and NaN/infinity protection
-- Visual and status error indication
-- Automatic hardware re-detection on errors
+Use for: Sensitive measurements, plant monitoring, research
 
-## Building from Source
+Connections:
 
-### Prerequisites
-- Flipper Zero official firmware development environment
-- Latest Flipper firmware source code
+Pin 2 (PA7) → Amplifier Output
 
-### Compilation
-```bash
-# In your flipper firmware directory
+Pin 3 (PA6) → Reference/Detection Pin
+
+Pin 4 (PA4) & Pin 5 (PA5) → Electrodes via amplifier
+
+GND → Amplifier Ground
+
+Features:
+
+Millivolt-level sensitivity
+
+Auto offset calibration
+
+10x sensitivity multiplier
+
+🔧 Recommended Amplifier Circuit
+
+INA128 or AD620-based instrumentation amplifier
+
+Gain: ~100–1000x
+
+High input impedance (>1GΩ)
+
+Low noise, low drift
+
+🚀 Installation
+
+Option 1: Precompiled
+
+Download the latest .fap file from Releases
+
+Copy it to your Flipper's apps/GPIO/ folder via qFlipper
+
+Option 2: Build From Source
+
+Clone the Flipper firmware
+
+Place this app into applications_user/
+
+Build:
+
 ./fbt fap_hack_the_planet
-
-# Build and launch directly
 ./fbt launch_app APPID=hack_the_planet
 
-# For debugging
-./fbt cli
-> log
-```
+🎮 Usage Guide
 
-## Troubleshooting
+Getting Started
 
-### No Hardware Detected
-- Verify GPIO connections match your configuration
-- Check amplifier board power and ground connections
-- Ensure detection pin (PA6) pulls low for amplifier mode
+Connect your electrodes (direct or amplifier)
 
-### Erratic Readings
-- Check electrode contact and cleanliness
-- Verify a stable power supply to the amplifier
-- Avoid touching electrodes during monitoring
-- Shield from electromagnetic interference
+Launch Hack the Planet from the GPIO apps menu
 
-### Audio Issues
-- Ensure the Flipper speaker is enabled
-- Check voltage thresholds aren't too high/low
-- Verify signal isn't saturating the ADC
-- Try adjusting electrode placement
+The app will automatically:
 
-### ADC Errors
-- Restart the application to reinitialize ADC
-- Check for loose GPIO connections
-- Ensure proper grounding of the amplifier circuit
-- Use the retry function in the error state
+Detect configuration
 
-## Scientific Applications
+Calibrate if necessary
 
-This monitor can be used for legitimate scientific and educational purposes:
+Apply proper sensitivity
 
-### Plant Physiology Research
-- Circadian rhythm monitoring
-- Environmental response studies
-- Ion transport research
-- Hydraulic pressure measurements
+Press OK to begin monitoring
 
-### Educational Demonstrations
-- Bioelectricity concepts
-- Signal processing techniques
-- Electronic circuit design
-- Data acquisition principles
+Monitoring States
 
-### Citizen Science
-- Long-term plant monitoring
-- Environmental sensing projects
-- Agricultural research applications
-- Biofeedback experiments
+DETECTING – Hardware auto-detection (~2 sec)
 
-## Advanced Features
+CALIBRATING – Amplifier offset tuning
 
-### State Machine Architecture
-The application uses a robust state machine for reliable operation:
-- **DETECTING**: Hardware configuration detection
-- **CALIBRATING**: Amplifier offset calibration
-- **READY**: Standby for user input  
-- **MONITORING**: Active signal acquisition
-- **ERROR**: Error handling and recovery
+READY – Waiting for user
 
-### Signal Processing
-- Running baseline calculation for drift compensation
-- Voltage change detection from baseline
-- Frequency mapping with bounds checking
-- Real-time display scaling and units
+MONITORING – Active signal analysis with audio
 
-## Contributing
+ERROR – Retry/recover from ADC issues
 
-We welcome contributions! Priority areas:
-- Additional amplifier board support
-- Enhanced signal processing algorithms
-- Data logging and export capabilities
-- Multiple channel monitoring
-- Wireless data transmission
-- Mobile app integration
+🌿 Electrode Applications
 
-## Version History
+Plants
 
-### v2.0 (Current)
-- Automatic hardware detection
-- Amplifier board support with calibration
-- Enhanced error handling and recovery
-- Improved signal processing
-- State machine architecture
+Ideal for pothos, philodendron, rubber plants
 
-### v1.0 (Legacy)
-- Basic plant monitoring
-- Simple and direct electrode connection
-- Manual sensitivity adjustment
+Clean electrode surfaces before use
 
-## License
+Attach to leaves or stems
 
-MIT License - Open source hardware and software encouraged
+Plants may respond to touch, music, light, etc.
 
-## Safety & Disclaimers
+Other Uses
 
-- **Electrical Safety**: Use only low-voltage circuits (<5V)
-- **Plant Care**: Handle plants gently; avoid electrode damage
-- **Scientific Interpretation**: Results are for educational purposes
-- **No Medical Claims**: Not intended for medical or therapeutic use
+Galvanic Skin Response (GSR)
 
----
+Electrolyte conductivity
 
-**Explore the electrical world around you! 🌱⚡🔊**
+Bioelectricity demos
 
-*From simple plant monitoring to advanced bioelectrical research - Hack the Planet makes it accessible to everyone.*
+Fruit/vegetable measurements
+
+📊 Technical Specifications
+
+Sampling & Signal
+
+Sample Rate: 20Hz (50ms)
+
+ADC: 12-bit (4096 levels)
+
+Voltage: 0–3.3V
+
+Buffer: 128 samples
+
+Frequency Output: 50–2000Hz
+
+Thresholds
+
+Amplified: 10mV, 10x sensitivity
+
+Direct: 100mV, 1x sensitivity
+
+Detection Logic
+
+Amplifier: 1.5–1.8V average w/ <50mV variance
+
+Auto-switch between modes
+
+Error Handling
+
+ADC retries with fallback
+
+NaN/infinity protection
+
+Auto re-init and status messages
+
+🛠 Troubleshooting
+
+❌ No Hardware Detected
+
+Check GPIO wiring
+
+Ensure amplifier ground is connected
+
+Detection pin PA6 must pull low
+
+⚠️ Erratic Readings
+
+Clean and secure electrodes
+
+Avoid touching during readings
+
+Eliminate nearby EMI
+
+🔇 No Audio
+
+Confirm speaker is active
+
+Recheck voltage thresholds
+
+Adjust electrode placement
+
+🚫 ADC Errors
+
+Restart app
+
+Check all GPIO cables
+
+Retry via OK button
+
+🔬 Scientific & Educational Uses
+
+Circadian rhythm & environmental studies
+
+Plant biofeedback experiments
+
+Signal processing education
+
+Electronic circuit & ADC training
+
+Citizen science + agriculture research
+
+💡 Advanced Architecture
+
+State Machine
+
+DETECTING → CALIBRATING → READY → MONITORING → ERROR
+
+Signal Engine
+
+Drift-compensated baseline
+
+Δ voltage detection
+
+Real-time frequency mapping
+
+Mode-dependent display scaling
+
+🤝 Contributing
+
+We welcome pull requests and suggestions!
+
+Focus areas:
+
+Multi-channel signal support
+
+Amplifier profile library
+
+Mobile integration & export
+
+Data logging tools
+
+📜 License
+
+MIT License – Open source hardware & software encouraged
+
+⚠️ Safety & Disclaimers
+
+⚡ Use low voltage only (<5V)
+
+🌱 Do not damage living plants
+
+🧪 Not a medical device
+
+📊 Data is for educational use only
