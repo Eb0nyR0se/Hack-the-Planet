@@ -96,57 +96,57 @@ Build:
 #
 🎮 **Usage Guide:**
 
-Getting Started
+1. Getting Started
 
-Connect your electrodes (direct or amplifier)
+2. Connect your electrodes (direct or amplifier)
 
-Launch Hack the Planet from the GPIO apps menu
+3. Launch Hack the Planet from the GPIO apps menu
 
-The app will automatically:
+4. The app will automatically:
 
-Detect configuration
+5. Detect configuration
 
-Calibrate if necessary
+6. Calibrate if necessary
 
-Apply proper sensitivity
+7. Apply proper sensitivity
 
-Press OK to begin monitoring
+8. Press OK to begin monitoring
 
-Monitoring States
+9. Monitoring States
 
-DETECTING – Hardware auto-detection (~2 sec)
+   *DETECTING – Hardware auto-detection (~2 sec)
 
-CALIBRATING – Amplifier offset tuning
+   *CALIBRATING – Amplifier offset tuning
 
-READY – Waiting for user
+   *READY – Waiting for user
 
-MONITORING – Active signal analysis with audio
+   *MONITORING – Active signal analysis with audio
 
-ERROR – Retry/recover from ADC issues
+   *ERROR – Retry/recover from ADC issues
 #
 #
 🌿 **Electrode Applications:**
 
-Plants
+-Plants
 
-Ideal for pothos, philodendron, rubber plants
+-Ideal for pothos, philodendron, rubber plants
 
-Clean electrode surfaces before use
+-Clean electrode surfaces before use
 
-Attach to leaves or stems
+-Attach to leaves or stems
 
-Plants may respond to touch, music, light, etc.
+-Plants may respond to touch, music, light, etc.
 #
 #
 **Other Uses:**
 
-Galvanic Skin Response (GSR)
+-Galvanic Skin Response (GSR)
 
-Electrolyte conductivity
+-Electrolyte conductivity
 
-Bioelectricity demos
+-Bioelectricity demos
 
-Fruit/vegetable measurements
+-Fruit/vegetable measurements
 #
 #
 📊 **Technical Specifications:**
@@ -168,8 +168,7 @@ Thresholds
 Amplified: 10mV, 10x sensitivity
 
 Direct: 100mV, 1x sensitivity
-#
-#
+
 Detection Logic
 
 Amplifier: 1.5–1.8V average w/ <50mV variance
