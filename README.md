@@ -43,7 +43,6 @@ Displays in microvolts (µV)
 
 Configuration 2: Amplifier Board (Advanced)
 #
-#
 Use for: Sensitive measurements, plant monitoring, research
 #
 Connections:
