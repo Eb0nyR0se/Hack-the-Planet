@@ -1,0 +1,21 @@
+
+App(
+    appid="hack_the_planet",
+    name="Hack the Planet",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="hack_the_planet_app",
+    requires=[
+        "gui",
+        "notification",
+        "storage",
+        "dialogs",
+    ],
+    stack_size=4 * 1024,
+    order=20,
+    fap_icon="icon.png",
+    fap_category="GPIO",
+    fap_description="Advanced bioelectrical monitor with automatic hardware detection and calibration",
+    fap_author="Hack the Planet Team",
+    fap_version="2.0",
+    fap_icon_assets="icons",
+)
