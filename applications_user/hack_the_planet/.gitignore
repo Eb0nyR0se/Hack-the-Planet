@@ -1,0 +1,27 @@
+# Ignore build artifacts and temporary files
+*.o
+*.d
+*.elf
+*.fap
+*.map
+*.a
+*.bin
+*.hex
+*.log
+*.pyc
+__pycache__/
+
+# Ignore firmware build outputs
+/build/
+/dist/
+/.fbt_tmp/
+
+# Editor and OS-specific junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+.idea/
+.vscode/
