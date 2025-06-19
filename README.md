@@ -1,7 +1,7 @@
 # Hack the Planet
 Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by dynamic audio feedback.
-
-
+#
+#
 🔑 **Key Features:**
 
 🔍 Intelligent Hardware Detection – Automatically detects amplifier boards vs direct connections
@@ -19,23 +19,25 @@ Transform your Flipper Zero into a professional-grade bioelectrical activity mon
 🎛️ Adaptive Sensitivity – Threshold auto-adjustment based on detected hardware
 
 📱 State Machine Architecture – Reliable operation with built-in error recovery
-
-
+#
+#
 🧩 **Hardware Configurations:**
 
 Configuration 1: Direct Connection (Basic)
 
 Use for: Learning, experimentation, high-voltage signals
-
+#
+#
 Connections:
 
 Pin 4 (PA4) → Electrode A (Positive)
 
 Pin 5 (PA5) → Electrode B (Negative)
-
+#
+#
 Features:
 
-Measures differential voltage
+3 Measures differential voltage
 
 High noise immunity (0.1V threshold)
 
@@ -44,7 +46,8 @@ Displays in microvolts (µV)
 Configuration 2: Amplifier Board (Advanced)
 
 Use for: Sensitive measurements, plant monitoring, research
-
+#
+#
 Connections:
 
 Pin 2 (PA7) → Amplifier Output
@@ -54,7 +57,8 @@ Pin 3 (PA6) → Reference/Detection Pin
 Pin 4 (PA4) & Pin 5 (PA5) → Electrodes via amplifier
 
 GND → Amplifier Ground
-
+#
+#
 Features:
 
 Millivolt-level sensitivity
@@ -62,8 +66,9 @@ Millivolt-level sensitivity
 Auto offset calibration
 
 10x sensitivity multiplier
-
-🔧 Recommended Amplifier Circuit
+#
+#
+🔧 **Recommended Amplifier Circuit**
 
 INA128 or AD620-based instrumentation amplifier
 
@@ -72,8 +77,8 @@ Gain: ~100–1000x
 High input impedance (>1GΩ)
 
 Low noise, low drift
-
-
+#
+#
 🚀 **Installation:**
 
 Option 1: Precompiled
@@ -91,8 +96,8 @@ Place this app into applications_user/
 Build:
 
 ./fbt fap_hack_the_planet ./fbt launch_app APPID=hack_the_planet
-
-
+#
+#
 🎮 **Usage Guide:**
 
 Getting Started
@@ -122,8 +127,8 @@ READY – Waiting for user
 MONITORING – Active signal analysis with audio
 
 ERROR – Retry/recover from ADC issues
-
-
+#
+#
 🌿 **Electrode Applications:**
 
 Plants
@@ -135,9 +140,9 @@ Clean electrode surfaces before use
 Attach to leaves or stems
 
 Plants may respond to touch, music, light, etc.
-
-
-Other Uses
+#
+#
+**Other Uses:**
 
 Galvanic Skin Response (GSR)
 
@@ -146,8 +151,8 @@ Electrolyte conductivity
 Bioelectricity demos
 
 Fruit/vegetable measurements
-
-
+#
+#
 📊 **Technical Specifications:**
 
 Sampling & Signal
@@ -167,8 +172,8 @@ Thresholds
 Amplified: 10mV, 10x sensitivity
 
 Direct: 100mV, 1x sensitivity
-
-
+#
+#
 Detection Logic
 
 Amplifier: 1.5–1.8V average w/ <50mV variance
@@ -182,8 +187,8 @@ ADC retries with fallback
 NaN/infinity protection
 
 Auto re-init and status messages
-
-
+#
+#
 🛠 **Troubleshooting:**
 
 ❌ No Hardware Detected
@@ -193,8 +198,8 @@ Check the GPIO wiring
 Ensure the amplifier ground is connected
 
 Detection pin PA6 must pull low
-
-
+#
+#
 ⚠️ **Erratic Readings**
 
 Clean and secure electrodes
@@ -202,8 +207,8 @@ Clean and secure electrodes
 Avoid touching during readings
 
 Eliminate nearby EMI
-
-
+#
+#
 🔇 **No Audio**
 
 Confirm the speaker is active
@@ -211,17 +216,17 @@ Confirm the speaker is active
 Recheck voltage thresholds
 
 Adjust electrode placement
-
-
+#
+#
 🚫 **ADC Errors**
 
 Restart app
 
 Check all GPIO cables
 
-Retry via OK button
-
-
+Retry via the OK button
+#
+#
 🔬 **Scientific & Educational Uses:**
 
 Circadian rhythm & environmental studies
@@ -233,8 +238,8 @@ Signal processing education
 Electronic circuit & ADC training
 
 Citizen science + agriculture research
-
-
+#
+#
 💡 **Advanced Architecture:**
 
 State Machine
@@ -250,8 +255,8 @@ Drift-compensated baseline
 Real-time frequency mapping
 
 Mode-dependent display scaling
-
-
+#
+#
 🤝 **Contributing:**
 
 We welcome pull requests and suggestions!
@@ -265,13 +270,13 @@ Amplifier profile library
 Mobile integration & export
 
 Data logging tools
-
-
+#
+#
 📜 **License:**
 
 MIT License – Open source hardware & software encouraged
-
-
+#
+#
 ⚠️ **Safety & Disclaimers:**
 
 ⚡ Use low voltage only (<5V)
