@@ -97,22 +97,22 @@ Build:
 🎮 **Usage Guide:**
 
 1. Getting Started
-
-2. Connect your electrodes (direct or amplifier)
-
-3. Launch Hack the Planet from the GPIO apps menu
-
-4. The app will automatically:
+#
+3. Connect your electrodes (direct or amplifier)
+#
+5. Launch Hack the Planet from the GPIO apps menu
+#
+7. The app will automatically:
 
       -Detect configuration
 
       -Calibrate if necessary
 
       -Apply proper sensitivity
-
-5. Press OK to begin monitoring
-
-6. Monitoring States:
+ # 
+ 9. Press OK to begin monitoring
+ #
+11. Monitoring States:
 
       -DETECTING – Hardware auto-detection (~2 sec)
 
