@@ -251,7 +251,7 @@ Mode-dependent display scaling
 #
 🤝 **Contributing:**
 
-We welcome pull requests and suggestions!
+I welcome pull requests and suggestions!
 
 Focus areas:
 
