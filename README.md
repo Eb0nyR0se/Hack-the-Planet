@@ -1,4 +1,4 @@
-# **Hack the Planet **
+# Hack the Planet
 Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by dynamic audio feedback.
 
 
