@@ -27,13 +27,11 @@ Configuration 1: Direct Connection (Basic)
 
 Use for: Learning, experimentation, high-voltage signals
 #
-#
 Connections:
 
 Pin 4 (PA4) → Electrode A (Positive)
 
 Pin 5 (PA5) → Electrode B (Negative)
-#
 #
 Features:
 
@@ -44,9 +42,9 @@ High noise immunity (0.1V threshold)
 Displays in microvolts (µV)
 
 Configuration 2: Amplifier Board (Advanced)
-
-Use for: Sensitive measurements, plant monitoring, research
 #
+#
+Use for: Sensitive measurements, plant monitoring, research
 #
 Connections:
 
@@ -57,7 +55,6 @@ Pin 3 (PA6) → Reference/Detection Pin
 Pin 4 (PA4) & Pin 5 (PA5) → Electrodes via amplifier
 
 GND → Amplifier Ground
-#
 #
 Features:
 
