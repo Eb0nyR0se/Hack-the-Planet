@@ -1,0 +1,19 @@
+[
+  {
+    "location": { "latitude": 35.678, "longitude": -120.123 },
+    "image_filename": "bat_echo_01.png",
+    "data_filename": "bat001.wav",
+    "description": "Bat detected over field",
+    "timestamp": 1720382712,
+    "signal_strength": 0.087,
+    "frequency_peak": 42.3,
+    "quality": {
+      "snr_db": 23.9,
+      "noise_level": 0.01
+    },
+    "suggested_species": "Eptesicus fuscus",
+    "confidence": 0.92,
+    "verified_species": "",
+    "species_verified": false
+  }
+]
