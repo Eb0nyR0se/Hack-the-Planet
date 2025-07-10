@@ -1,0 +1,19 @@
+[
+  {
+    "location": { "latitude": 42.351, "longitude": -71.047 },
+    "image_filename": "monstera01.jpg",
+    "data_filename": "plant001.wav",
+    "description": "Healthy Monstera in shade",
+    "timestamp": 1720382212,
+    "signal_strength": 0.003,
+    "frequency_peak": 0.12,
+    "quality": {
+      "electrode_connected": true,
+      "signal_valid": true,
+      "snr_db": 19.5
+    },
+    "suggested_species": "Monstera deliciosa",
+    "verified_species": "",
+    "species_verified": false
+  }
+]
