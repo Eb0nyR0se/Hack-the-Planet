@@ -74,7 +74,7 @@ High input impedance (>1GΩ)
 
 Low noise, low drift
 
-
+#
 I'm currently in the process of designing the Amplifier Board to accompany this application. Keep an eye out for updates.
 #
 #
