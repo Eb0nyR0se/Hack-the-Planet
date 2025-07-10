@@ -186,7 +186,7 @@ Auto re-init and status messages
 #
 🛠 **Troubleshooting:**
 
-❌ No Hardware Detected
+No Hardware Detected
 
 Check the GPIO wiring
 
