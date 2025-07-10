@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ${record.image ? `<img src="${record.image}" alt="plant image"/>` : ""}
             ${record.audio ? `<audio controls src="${record.audio}"></audio>` : ""}
             <br/>
-            <button class="approve">✅ Approve</button>
-            <button class="reject">❌ Reject</button>
+            <button class="approve">Approve</button>
+            <button class="reject">Reject</button>
           `;
 
           div.innerHTML = content;
