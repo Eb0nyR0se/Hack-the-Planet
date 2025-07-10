@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["location", "image_filename", "data_filename", "timestamp"],
+    "properties": {
+      "location": {
+        "type": "object",
+        "properties": {
+          "latitude": { "type": "number" },
+          "longitude": { "type": "number" }
+        },
+        "required": ["latitude", "longitude"]
+      },
+      "image_filename": { "type": "string" },
+      "data_filename": { "type": "string" },
+      "description": { "type": "string" },
+      "timestamp": { "type": "integer" },
+      "suggested_species": { "type": "string" },
+      "verified_species": { "type": "string" },
+      "species_verified": { "type": "boolean" }
+    }
+  }
+}
