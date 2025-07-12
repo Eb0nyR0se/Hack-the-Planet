@@ -1,0 +1,6 @@
+APP_NAME = hack_the_planet
+APP_DIR = .
+FAP_DIR = .
+ICON_DIR = icons
+
+include $(FLIPPER_PATH)/applications.mk
