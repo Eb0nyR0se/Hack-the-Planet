@@ -47,13 +47,13 @@ Use for: Sensitive measurements, plant monitoring, research
 #
 Amplifier Board GPIO Connections:
 
-Pin 2 (PA7) → Amplifier Output
+Pin 2 (PA7) → Amplifier Output 
 
 Pin 3 (PA6) → Reference/Detection Pin
 
 Pin 4 (PA4) & Pin 5 (PA5) → Electrodes via amplifier
 
-GND → Amplifier Ground
+GND → Amplifier Ground (common ground)
 #
 Features:
 
