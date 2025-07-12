@@ -9,6 +9,10 @@
 #include <notification/notification_messages.h>
 #include <dolphin/dolphin.h>
 
+#ifndef UNUSED
+#define UNUSED(x) (void)(x)
+#endif
+
 // GPIO pins for different configurations
 #define AMPLIFIER_OUTPUT_PIN &gpio_ext_pa7  // Pin 2 on GPIO (from amplifier)
 #define REFERENCE_PIN &gpio_ext_pa6        // Pin 3 on GPIO (reference/detection)
@@ -539,6 +543,7 @@ static uint32_t hack_the_planet_app_exit_callback(void* context) {
 // App initialization
 static HackThePlanetApp* hack_the_planet_app_alloc() {
     HackThePlanetApp* app = malloc(sizeof(HackThePlanetApp));
+if(!app) return NULL; // Or handle error appropriately
     
     // Initialize GUI
     app->gui = furi_record_open(RECORD_GUI);
