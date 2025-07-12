@@ -1,9 +1,0 @@
-[manifest]
-appid=hack_the_planet
-name=Hack the Planet
-entry_point=hack_the_planet_app
-version=2.0
-icon=icon.png
-category=GPIO
-description=Advanced bioelectrical monitor with automatic hardware detection and calibration
-author=Hack the Planet Team
