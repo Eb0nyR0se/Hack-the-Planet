@@ -16,13 +16,13 @@ cd "$FIRMWARE_DIR" || exit 1
 # Build the app
 echo "==> Building app: $APP_NAME"
 ./fbt fap_$APP_NAME || {
-    echo "❌ Build failed!"
+    echo "Build failed!"
     exit 1
 }
 
 # Launch the app
 echo "==> Launching app: $APP_NAME"
 ./fbt launch_app APPID=$APP_NAME || {
-    echo "❌ Launch failed!"
+    echo "Launch failed!"
     exit 1
 }
