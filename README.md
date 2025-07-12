@@ -94,7 +94,9 @@ Place this app into applications_user/
 
 Build:
 
-./fbt fap_hack_the_planet ./fbt launch_app APPID=hack_the_planet
+./fbt fap_hack_the_planet 
+
+./fbt launch_app APPID=hack_the_planet
 #
 #
 🎮 **Usage Guide:**
