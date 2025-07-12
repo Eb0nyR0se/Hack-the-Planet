@@ -1,3 +1,4 @@
+#include <furi_hal_adc.h>
 #include <furi.h>
 #include <furi_hal.h>
 #include <gui/gui.h>
@@ -12,6 +13,7 @@
 #ifndef UNUSED
 #define UNUSED(x) (void)(x)
 #endif
+
 
 // GPIO pins for different configurations
 #define AMPLIFIER_OUTPUT_PIN &gpio_ext_pa7  // Pin 2 on GPIO (from amplifier)
@@ -34,20 +36,10 @@
 #define MAX_ADC_VALUE 4095.0f              // 12-bit ADC maximum
 #define REFERENCE_VOLTAGE 3.3f             // Flipper Zero reference voltage
 
-typedef enum {
-    AMPLIFIER_MODE_UNKNOWN,
-    AMPLIFIER_MODE_DETECTED,
-    AMPLIFIER_MODE_NONE,
-    AMPLIFIER_MODE_ERROR
-} AmplifierMode;
 
-typedef enum {
-    APP_STATE_DETECTING,
-    APP_STATE_CALIBRATING,
-    APP_STATE_READY,
-    APP_STATE_MONITORING,
-    APP_STATE_ERROR
-} AppState;
+
+
+// Hack the Planet App - Flipper Zero
 
 typedef struct {
     Gui* gui;
@@ -87,6 +79,7 @@ typedef struct {
     char frequency_text[32];
     char mode_text[32];
 } HackThePlanetApp;
+static void hack_the_planet_app_free(HackThePlanetApp* app);
 
 typedef enum {
     HackThePlanetViewSubmenu,
@@ -100,32 +93,76 @@ typedef enum {
     HackThePlanetSubmenuAbout,
 } HackThePlanetSubmenuIndex;
 
+typedef enum {
+    AMPLIFIER_MODE_UNKNOWN,
+    AMPLIFIER_MODE_DETECTED,
+    AMPLIFIER_MODE_NONE,
+    AMPLIFIER_MODE_ERROR
+} AmplifierMode;
+
+typedef enum {
+    APP_STATE_DETECTING,
+    APP_STATE_CALIBRATING,
+    APP_STATE_READY,
+    APP_STATE_MONITORING,
+    APP_STATE_ERROR
+} AppState;
+
 // Function prototypes
-static void hack_the_planet_app_draw_callback(Canvas* canvas, void* context);
-static bool hack_the_planet_app_input_callback(InputEvent* event, void* context);
-static uint32_t hack_the_planet_app_exit_callback(void* context);
-static void hack_the_planet_submenu_callback(void* context, uint32_t index);
-static void hack_the_planet_timer_callback(void* context);
+static void hack_the_planet_app_draw_callback(Canvas* canvas, void* context) {
+    (void)canvas;
+    (void)context;
+}
+static bool hack_the_planet_app_input_callback(InputEvent* event, void* context) {
+    (void)event;
+    (void)context;
+    return true  ;
+}
+}
+static uint32_t hack_the_planet_app_exit_callback(void* context) {
+    (void)context;
+    return 0;
+}
+
+static void hack_the_planet_submenu_callback(void* context, uint32_t index) {
+    (void)context;
+    (void)index;
+}
+}
+static float read_voltage_for_mode(HackThePlanetApp* app) {
+    (void)app;
+    return 0.0f; 
+}
+static void hack_the_planet_timer_callback(void* context) {
+}
 static AmplifierMode detect_amplifier_board(HackThePlanetApp* app);
-static bool read_adc_with_error_check(FuriHalAdcChannel channel, uint16_t* value);
+}
+static void calibrate_amplifier(HackThePlanetApp* app); {
+    (void)app;
+}
+}
+}
 static float read_voltage_for_mode(HackThePlanetApp* app);
-static void calibrate_amplifier(HackThePlanetApp* app);
 
 // Safe ADC reading with error checking
 static bool read_adc_with_error_check(FuriHalAdcChannel channel, uint16_t* value) {
-    if(!furi_hal_adc_is_ready()) {
-        return false;
+    for(int i = 0; i < 3; i++) {
+        *value = furi_hal_adc_read(adc_handle, channel);
+        if(*value <= MAX_ADC_VALUE) {
+            return true;
+        }
+         furi_delay_ms(1);
     }
+    return false;
+}
     
     // Multiple attempts for reliability
-    for(int i = 0; i < 3; i++) {
+for(int i = 0; i < 3; i = +) {
         *value = furi_hal_adc_read(&furi_hal_adc_handle, channel);
         if(*value <= MAX_ADC_VALUE) {
             return true;
         }
         furi_delay_ms(1);
-    }
-    
     return false;
 }
 
@@ -161,18 +198,39 @@ static AmplifierMode detect_amplifier_board(HackThePlanetApp* app) {
         return AMPLIFIER_MODE_ERROR;
     }
     
-    float average_voltage = voltage_sum / valid_readings;
+    float display_change = (app->amplifier_mode == AMPLIFIER_MODE_DETECTED) ?
+                               voltage_sum * 1000 :
+                               voltage_change * 1000000;
     
     // More robust amplifier detection
     // Look for stable voltage around Vcc/2 (1.65V) with tight tolerance
     bool amplifier_signature = (average_voltage > 1.5f && average_voltage < 1.8f);
     
     // Additional check: measure voltage stability (amplifier should be stable)
-    float voltage_variance = 0.0f;
+    for(int i = 0; i < 5; i++) {
+        float display_voltage = (app->amplifier_mode == AMPLIFIER_MODE_DETECTED) ? voltage * 1000 : voltage * 1000000;
+const char* unit = (app->amplifier_mode == AMPLIFIER_MODE_DETECTED) ? "mV" : "µV";
+snprintf(app->status_text, sizeof(app->status_text), "Monitoring... Δ: %.2f %s", (double)display_change, unit);
+snprintf(app->status_text, sizeof(app->status_text), "Calibrated: %.3fV offset", (double)app->amplifier_offset);
+for(int i = 0; i < 5; i++) {
+    snprintf(
+    app->voltage_text, sizeof(app->voltage_text), "V: %.3f %s", (double)display_voltage, unit);
+snprintf(
+    app->status_text,
+    sizeof(app->status_text),
+    "Monitoring... Δ: %.2f %s",
+    (double)display_change,
+    unit);
+snprintf(
+    app->status_text,
+    sizeof(app->status_text),
+    "Calibrated: %.3fV offset",
+    (double)app->amplifier_offset);
+float voltage_variance = 0.0f;
     for(int i = 0; i < 5; i++) {
         uint16_t adc_value;
         if(read_adc_with_error_check(ADC_CHANNEL_PA7, &adc_value)) {
-            float voltage = (adc_value / MAX_ADC_VALUE) * REFERENCE_VOLTAGE;
+        float voltage = (adc_value / MAX_ADC_VALUE) * REFERENCE_VOLTAGE;
             voltage_variance += fabs(voltage - average_voltage);
         }
         furi_delay_ms(10);
@@ -273,8 +331,11 @@ static float read_voltage_for_mode(HackThePlanetApp* app) {
 
 // Generate audio tone with bounds checking
 static void generate_plant_tone(HackThePlanetApp* app, float voltage_change) {
-    if(fabs(voltage_change) < app->voltage_threshold) return;
-    if(app->adc_error) return; // Don't play tones if we have ADC errors
+    if(fabs(voltage_change) 
+        app->voltage_threshold) 
+        return;
+    if(app->adc_error)
+        return; // Don't play tones if we have ADC errors
     
     // Map voltage change to frequency with bounds checking
     float frequency_multiplier = (app->amplifier_mode == AMPLIFIER_MODE_DETECTED) ? 500.0f : 100.0f;
@@ -596,7 +657,8 @@ if(!app) return NULL; // Or handle error appropriately
     view_set_input_callback(main_view, hack_the_planet_app_input_callback);
     
     // Setup view dispatcher
-    view_dispatcher_set_event_callback_context(app->view_dispatcher, app);
+    static void hack_the_planet_app_free(HackThePlanetApp * app) {
+        (void)app;
     view_dispatcher_add_view(app->view_dispatcher, HackThePlanetViewSubmenu, submenu_get_view(app->submenu));
     view_dispatcher_add_view(app->view_dispatcher, HackThePlanetViewMain, main_view);
     view_dispatcher_attach_to_gui(app->view_dispatcher, app->gui, ViewDispatcherTypeFullscreen);
@@ -608,9 +670,9 @@ if(!app) return NULL; // Or handle error appropriately
 }
 
 // App cleanup
-static void hack_the_planet_app_free(HackThePlanetApp* app) {
+static void hack_the_planet_app_free(HackThePlanetApp * app) {
     furi_hal_speaker_stop();
-    
+}
     // Stop and free timer
     if(app->monitor_timer) {
         furi_timer_stop(app->monitor_timer);
@@ -632,14 +694,13 @@ static void hack_the_planet_app_free(HackThePlanetApp* app) {
 
 // Main entry point
 int32_t hack_the_planet_app(void* p) {
-    UNUSED(p);
-    
+    static HackThePlanetApp* hack_the_planet_app_alloc();
+
     HackThePlanetApp* app = hack_the_planet_app_alloc();
-    
+
     view_dispatcher_switch_to_view(app->view_dispatcher, HackThePlanetViewSubmenu);
     view_dispatcher_run(app->view_dispatcher);
-    
+
     hack_the_planet_app_free(app);
-    
-    return 0;
 }
+    return 0;
