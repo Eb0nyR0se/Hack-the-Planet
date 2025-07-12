@@ -31,7 +31,7 @@ GPIO Connections:
 
 Pin 4 (PA4) → Electrode A (Positive)
 
-Pin 5 (PA5) → Electrode B (Negative)
+Pin 6 (PB1) → Electrode B (Negative)
 #
 Features:
 
