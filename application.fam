@@ -5,11 +5,9 @@ App(
     entry_point="hack_the_planet_app",
     stack_size=2 * 1024,
     fap_category="GPIO",
-    # Optional values
-    # fap_version=(0, 1),  # (major, minor)
-    fap_icon="black_icon.png",
+    fap_icon="icon.png",
     fap_author="@Eb0nyR0se",
     fap_weburl="https://github.com/Eb0nyR0se/HackThePlanet",
-    fap_version="1",
-    fap_description="Advanced bioelectrical monitor"
+    fap_version="1.0",
+    fap_description="Advanced Bioelectrical Monitor"
 )
