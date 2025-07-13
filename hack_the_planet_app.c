@@ -19,12 +19,13 @@
 #define TAG "HackThePlanet"
 
 // GPIO pin definitions
-#define AMPLIFIER_OUTPUT_PIN &gpio_ext_pa7
-#define REFERENCE_PIN        &gpio_ext_pb7
+#define AMPLIFIER_OUTPUT_PIN &gpio_ext_pa7      // Signal input from amplifier or direct sensing
+#define REFERENCE_PIN        &gpio_ext_pb7      // Digital reference (used for detection only)
 // NOTE: PB7 is not an ADC-capable pin, so no ADC channel needed here
 
-#define DIRECT_INPUT_PIN_1   &gpio_ext_pa4
-#define DIRECT_INPUT_PIN_2   &gpio_ext_pb1
+#define DIRECT_INPUT_PIN_1   &gpio_ext_pa4      // Direct sensing input 1 (ADC capable)
+#define DIRECT_INPUT_PIN_2   &gpio_ext_pb1      // Direct sensing input 2 (ADC capable)
+
 
 
 // ADC channels
