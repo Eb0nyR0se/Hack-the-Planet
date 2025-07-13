@@ -38,7 +38,7 @@ Pin 7 (GND) → Electrode B (Negative / Ground Reference)
 These two connections form a complete electrical circuit necessary for proper analog signal acquisition. 
 Without a ground connection to Pin 7, the analog input on PA7 will receive a floating signal, resulting in unstable or zero voltage readings and unreliable behavior.
 
-This configuration allows direct sensing of bioelectrical signals, such as those from plants, skin, or other natural sources, using only clip wires.
+This configuration allows direct sensing of bioelectrical signals, such as those from plants or other natural sources, using only clip wires.
 Ensure the electrodes are securely attached to the subject and that both connections are stable.
 
 For improved signal clarity, you may optionally add a 10kΩ pull-down resistor between PA7 and GND. Basic shielding (e.g., foil wrapping around wires) can also help reduce noise in sensitive environments.
