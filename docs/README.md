@@ -29,7 +29,7 @@ Use for: Learning, experimentation, high-voltage signals
 #
 **GPIO Connections:**
 
-To use this application with alligator clip to breadboard jumper wires (without an amplifier board or breadboard), connect the wires directly to the following GPIO pins on the Flipper Zero:
+To use this application with alligator clip to breadboard jumper wires (without an amplifier board), connect the wires directly to the following GPIO pins on the Flipper Zero:
 
 Pin 2 (PA7) → Electrode A (Positive / Signal Input)
 
