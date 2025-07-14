@@ -1,295 +1,236 @@
-# Hack the Planet 🌎
-Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by dynamic audio feedback. 
+# Hack the Planet - Flipper Zero Bioelectrical Monitor 
 #
 #
-🔑 **Key Features:**
+Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by dynamic audio feedback.
 
-🔍 Intelligent Hardware Detection – Automatically detects amplifier boards vs direct connections
+*"Hack the Planet is a fun Flipper Zero application that lets you record and explore plant signals and bat sonar. It's perfect for curious nature lovers who want to connect technology with the natural world and unlock hidden signals all around us."*
 
-🎯 Automatic Calibration – Self-calibrating offset compensation for amplified signals
+**Repository:** https://github.com/Eb0nyR0se/HackThePlanet
 
-🌱 Dual Monitoring Modes – Direct differential measurement and amplified signal processing
+## Key Features:
 
-🔊 Dynamic Audio Feedback – Frequency-mapped audio with sensitivity scaling
+- **Intelligent Hardware Detection** – Automatically detects amplifier boards vs direct connections
+- **Automatic Calibration** – Self-calibrating offset compensation for amplified signals
+- **Dual Monitoring Modes** – Direct differential measurement and amplified signal processing
+- **Dynamic Audio Feedback** – Frequency-mapped audio with sensitivity scaling
+- **Real-time Visualization** – Live voltage display with error indication
+- **Robust Error Handling** – Comprehensive ADC error detection and recovery
+- **Adaptive Sensitivity** – Threshold auto-adjustment based on detected hardware
+- **State Machine Architecture** – Reliable operation with built-in error recovery
 
-📊 Real-time Visualization – Live voltage display with error indication
+## Installation
 
-⚡ Robust Error Handling – Comprehensive ADC error detection and recovery
+### Prerequisites
 
-🎛️ Adaptive Sensitivity – Threshold auto-adjustment based on detected hardware
+- Flipper Zero device with updated firmware
+- qFlipper application installed on your computer
+- MicroSD card inserted in your Flipper Zero
 
-📱 State Machine Architecture – Reliable operation with built-in error recovery
-#
-#
-🧩 **Hardware Configurations:**
+### Option 1: Install Precompiled Binary (Recommended)
 
-Configuration 1: Direct Connection (Basic)
+1. **Download the Application**
+   - Go to the [Releases](https://github.com/Eb0nyR0se/HackThePlanet/releases) page
+   - Download the latest `hack_the_planet.fap` file
+   - *Note: If no releases are available yet, use Option 2 to build from source*
 
-Use for: Learning, experimentation, high-voltage signals
-#
+2. **Connect Your Flipper Zero**
+   - Connect your Flipper Zero to your computer via USB
+   - Launch qFlipper application
+   - Wait for your device to be recognized
+
+3. **Install the App**
+   - In qFlipper, navigate to the file browser
+   - Browse to the `apps/GPIO/` folder on your Flipper's SD card
+   - If the `GPIO` folder doesn't exist, create it
+   - Copy the `hack_the_planet.fap` file into the `apps/GPIO/` folder
+
+4. **Launch the App**
+   - Disconnect your Flipper Zero from the computer
+   - On your Flipper, navigate to: **Apps → GPIO → Hack the Planet**
+   - Press OK to launch
+
+### Option 2: Build from Source
+
+1. **Download This Repository**
+   - Clone or download this repository:
+     ```bash
+     git clone https://github.com/yourusername/hack_the_planet.git
+     ```
+
+2. **Set Up Flipper Firmware**
+   - Clone the official Flipper Zero firmware repository:
+     ```bash
+     git clone --recursive https://github.com/flipperdevices/flipperzero-firmware.git
+     cd flipperzero-firmware
+     ```
+
+3. **Add This Application**
+   - Copy the `hack_the_planet` folder from this repository into the firmware's `applications_user/` directory:
+     ```bash
+     cp -r /path/to/downloaded/hack_the_planet ./applications_user/
+     ```
+   - The structure should look like:
+     ```
+     flipperzero-firmware/
+     └── applications_user/
+         └── hack_the_planet/
+             ├── application.fam
+             ├── hack_the_planet.c
+             └── [other source files]
+     ```
+
+4. **Build the Application**
+   ```bash
+   ./fbt fap_hack_the_planet
+   ```
+
+5. **Install to Device**
+   - **Option A: Direct Install**
+     ```bash
+     ./fbt launch_app APPID=hack_the_planet
+     ```
+   
+   - **Option B: Manual Install**
+     - The compiled `.fap` file will be in `dist/f7-C/`
+     - Copy it to your Flipper's `apps/GPIO/` folder using qFlipper
+
+### Option 3: Using the Provided Build Script
+
+If you downloaded the repository and it includes the build script:
+
+1. **Make the script executable:**
+   ```bash
+   chmod +x build_and_launch.sh
+   ```
+
+2. **Run the script:**
+   ```bash
+   ./build_and_launch.sh
+   ```
+
+This will automatically build and launch the application on your connected Flipper Zero.
+
+## Hardware Setup
+
+### Configuration 1: Direct Connection (Basic)
+
+Use for learning, experimentation, and high-voltage signals.
+
 **GPIO Connections:**
+- Pin 2 (PA7) → Electrode A (Positive / Signal Input)
+- Pin 7 (GND) → Electrode B (Negative / Ground Reference)
 
-To use this application with alligator clip to breadboard jumper wires (without an amplifier board), connect the wires directly to the following GPIO pins on the Flipper Zero:
+**Features:**
+- Measures differential voltage
+- High noise immunity (0.1V threshold)
+- Displays in microvolts (µV)
 
-Pin 2 (PA7) → Electrode A (Positive / Signal Input)
+### Configuration 2: Amplifier Board (Advanced)
 
-Pin 7 (GND) → Electrode B (Negative / Ground Reference)
+Use for sensitive measurements, plant monitoring, and research.
 
-These two connections form a complete electrical circuit necessary for proper analog signal acquisition. 
-Without a ground connection to Pin 7, the analog input on PA7 will receive a floating signal, resulting in unstable or zero voltage readings and unreliable behavior.
+**Amplifier Board GPIO Connections:**
+- Pin 2 (PA7) → Amplifier Output
+- Pin 3 (PA6) → Reference/Detection Pin
+- Pin 4 (PA4) & Pin 5 (PA5) → Electrodes via amplifier
+- GND → Amplifier Ground (common ground)
 
-This configuration allows direct sensing of bioelectrical signals, such as those from plants or other natural sources, using only clip wires.
-Ensure the electrodes are securely attached to the subject and that both connections are stable.
+**Features:**
+- Millivolt-level sensitivity
+- Auto offset calibration
+- 10x sensitivity multiplier
 
-For improved signal clarity, you may optionally add a 10kΩ pull-down resistor between PA7 and GND. Basic shielding (e.g., foil wrapping around wires) can also help reduce noise in sensitive environments.
-#
-Features:
+## Quick Start Guide
 
-3 Measures differential voltage
+**Never used a Flipper Zero app before?**
 
-High noise immunity (0.1V threshold)
+1. Install the app using Option 1 (precompiled) or Option 2 (build from source)
+2. Connect two jumper wires: Pin 2 (PA7) to one electrode, Pin 7 (GND) to the other
+3. On your Flipper: Apps → GPIO → Hack the Planet
+4. Press OK to start, then OK again when it shows "READY"
+5. Touch the electrodes to a plant leaf and watch the voltage readings!
 
-Displays in microvolts (µV)
+## Firmware Compatibility
 
-Configuration 2: Amplifier Board (Advanced)
-#
-Use for: Sensitive measurements, plant monitoring, research
-#
-Amplifier Board GPIO Connections:
+- **Tested on:** Official Flipper Zero firmware v0.100.0 and later
+- **Compatible with:** Unleashed, RogueMaster, and other custom firmware forks
+- **Minimum required:** Flipper Zero firmware with fap support (v0.74.0+)
 
-Pin 2 (PA7) → Amplifier Output 
+1. **Connect Your Hardware**
+   - Set up electrodes according to your chosen configuration
+   - Ensure all connections are secure
 
-Pin 3 (PA6) → Reference/Detection Pin
+2. **Launch the Application**
+   - Navigate to Apps → GPIO → Hack the Planet
+   - Press OK to start
 
-Pin 4 (PA4) & Pin 5 (PA5) → Electrodes via amplifier
+3. **Automatic Setup**
+   - The app will automatically detect your configuration
+   - Calibration will occur if using an amplifier board
+   - Proper sensitivity will be applied
 
-GND → Amplifier Ground (common ground)
-#
-Features:
+4. **Begin Monitoring**
+   - Press OK when the app shows "READY"
+   - The app will enter monitoring mode with audio feedback
 
-Millivolt-level sensitivity
+## Monitoring States
 
-Auto offset calibration
+- **DETECTING** – Hardware auto-detection (~2 seconds)
+- **CALIBRATING** – Amplifier offset tuning
+- **READY** – Waiting for user input
+- **MONITORING** – Active signal analysis with audio
+- **ERROR** – Retry/recover from ADC issues
 
-10x sensitivity multiplier
-#
-#
-🔧 **Recommended Amplifier Circuit:**
+## Troubleshooting
 
-INA128 or AD620-based instrumentation amplifier
+### No Hardware Detected
+- Check GPIO wiring connections
+- Ensure amplifier ground is connected
+- Verify detection pin PA6 pulls low
 
-Gain: ~100–1000x
+### Erratic Readings
+- Clean and secure electrodes
+- Avoid touching during readings
+- Eliminate nearby electromagnetic interference
 
-High input impedance (>1GΩ)
+### No Audio
+- Confirm speaker is active
+- Check voltage thresholds
+- Adjust electrode placement
 
-Low noise, low drift
+### ADC Errors
+- Restart the application
+- Check all GPIO cable connections
+- Use OK button to retry
 
-#
-I'm currently in the process of designing the Amplifier Board to accompany this application. Keep an eye out for updates.
-#
-#
-🚀 **Installation:**
+## Technical Specifications
 
-Option 1: Precompiled
+**Sampling & Signal:**
+- Sample Rate: 20Hz (50ms)
+- ADC: 12-bit (4096 levels)
+- Voltage Range: 0–3.3V
+- Buffer: 128 samples
+- Frequency Output: 50–2000Hz
 
-Download the latest .fap file from Releases
+**Thresholds:**
+- Amplified: 10mV, 10x sensitivity
+- Direct: 100mV, 1x sensitivity
 
-Copy it to your Flipper's apps/GPIO/ folder via qFlipper
+## Safety & Disclaimers
 
-Option 2: Build From Source
+- Use low voltage only (<5V)
+- Do not damage living plants
+- Not a medical device
+- Data is for educational use only
 
-Clone the Flipper firmware
-
-Place this app into applications_user/
-
-Build:
-
-./fbt fap_hack_the_planet 
-
-./fbt launch_app APPID=hack_the_planet
-#
-#
-🎮 **Usage Guide:**
-
-1. Getting Started
-#
-3. Connect your electrodes (direct or amplifier)
-#
-4. Launch Hack the Planet from the GPIO apps menu
-#
-5. The app will automatically:
-
-      Detect configuration
-
-      Calibrate if necessary
-
-      Apply proper sensitivity
- # 
- 6. Press OK to begin monitoring
- #
- 7. Monitoring States:
-
-       DETECTING – Hardware auto-detection (~2 sec)
-
-       CALIBRATING – Amplifier offset tuning
-
-       READY – Waiting for user
-
-       MONITORING – Active signal analysis with audio
-
-       ERROR – Retry/recover from ADC issues
-#
-#
-🌿 **Electrode Applications:**
-
-Plants
-
-Ideal for pothos, philodendron, rubber plants
-
-Clean electrode surfaces before use
-
-Attach to leaves or stems
-
-Plants may respond to touch, music, light, etc.
-#
-#
-**Other Uses:**
-
-Galvanic Skin Response (GSR)
-
-Electrolyte conductivity
-
-Bioelectricity demos
-
-Fruit/vegetable measurements
-#
-#
-📊 **Technical Specifications:**
-
-Sampling & Signal
-
-Sample Rate: 20Hz (50ms)
-
-ADC: 12-bit (4096 levels)
-
-Voltage: 0–3.3V
-
-Buffer: 128 samples
-
-Frequency Output: 50–2000Hz
-
-Thresholds
-
-Amplified: 10mV, 10x sensitivity
-
-Direct: 100mV, 1x sensitivity
-
-Detection Logic
-
-Amplifier: 1.5–1.8V average w/ <50mV variance
-
-Auto-switch between modes
-
-Error Handling
-
-ADC retries with fallback
-
-NaN/infinity protection
-
-Auto re-init and status messages
-#
-#
-🛠 **Troubleshooting:**
-
-No Hardware Detected
-
-Check the GPIO wiring
-
-Ensure the amplifier ground is connected
-
-Detection pin PA6 must pull low
-#
-⚠️ **Erratic Readings**
-
-Clean and secure electrodes
-
-Avoid touching during readings
-
-Eliminate nearby EMI
-#
-🔇 **No Audio**
-
-Confirm the speaker is active
-
-Recheck voltage thresholds
-
-Adjust electrode placement
-#
-🚫 **ADC Errors**
-
-Restart app
-
-Check all GPIO cables
-
-Retry via the OK button
-#
-#
-🔬 **Scientific & Educational Uses:**
-
-Circadian rhythm & environmental studies
-
-Plant biofeedback experiments
-
-Signal processing education
-
-Electronic circuit & ADC training
-
-Citizen science + agriculture research
-#
-#
-💡 **Advanced Architecture:**
-
-State Machine
-
-DETECTING → CALIBRATING → READY → MONITORING → ERROR
-
-Signal Engine
-
-Drift-compensated baseline
-
-Δ voltage detection
-
-Real-time frequency mapping
-
-Mode-dependent display scaling
-#
-#
-🤝 **Contributing:**
-
-I welcome pull requests and suggestions!
-#
-Focus areas:
-
-Multi-channel signal support
-
-Amplifier profile library
-
-Mobile integration & export
-
-Data logging tools
-#
-#
-📜 **License:**
+## License
 
 MIT License – Open source hardware & software encouraged
-#
-#
-⚠️ **Safety & Disclaimers:**
 
-⚡ Use low voltage only (<5V)
+## Contributing
 
-🌱 Do not damage living plants
-
-🧪 Not a medical device
-
-📊 Data is for educational use only
+Pull requests and suggestions are welcome! Focus areas include:
+- Multi-channel signal support
+- Amplifier profile library
+- Mobile integration & export
+- Data logging tools
