@@ -3,11 +3,11 @@ App(
     name="HackThePlanet",
     apptype=FlipperAppType.EXTERNAL,
     entry_point="hack_the_planet_app",
-    stack_size=2 * 1024,
+    stack_size=4 * 1024,
     fap_category="GPIO",
     fap_icon="icon.png",
     fap_author="@Eb0nyR0se",
     fap_weburl="https://github.com/Eb0nyR0se/HackThePlanet",
     fap_version="1.0",
-    fap_description="Advanced Bioelectrical Monitor"
+    fap_description="Advanced Bioelectrical Monitor - Species Verification",
 )
