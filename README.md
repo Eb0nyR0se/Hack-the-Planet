@@ -1,13 +1,12 @@
-# Hack the Planet - Flipper Zero Bioelectrical Monitor 
+# Hack the Planet - Flipper Zero Bioelectrical Monitor
 #
-
 Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by dynamic audio feedback.
 
 *"Hack the Planet is a fun Flipper Zero application that lets you record and explore plant signals and bat sonar. It's perfect for curious nature lovers who want to connect technology with the natural world and unlock hidden signals all around us."*
 
 **Repository:** https://github.com/Eb0nyR0se/HackThePlanet
 
-## Key Features:
+## Key Features
 
 - **Intelligent Hardware Detection** – Automatically detects amplifier boards vs direct connections
 - **Automatic Calibration** – Self-calibrating offset compensation for amplified signals
@@ -85,14 +84,19 @@ Transform your Flipper Zero into a professional-grade bioelectrical activity mon
    ```
 
 5. **Install to Device**
-   - **Option A: Direct Install**
+   - **Option A: Launch Directly (requires connected Flipper)**
      ```bash
-     ./fbt launch_app APPID=hack_the_planet
+     ./fbt launch APPSRC=hack_the_planet
      ```
    
    - **Option B: Manual Install**
      - The compiled `.fap` file will be in `dist/f7-C/`
      - Copy it to your Flipper's `apps/GPIO/` folder using qFlipper
+   
+   - **Option C: Install via FBT**
+     ```bash
+     ./fbt fap_install APPSRC=hack_the_planet
+     ```
 
 ### Option 3: Using the Provided Build Script
 
