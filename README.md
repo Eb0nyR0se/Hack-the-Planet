@@ -21,7 +21,7 @@ Use for learning, experimentation, high-voltage signals.
 
 **GPIO Connections:**
 
-- Pin 2 (PA7) → Electrode A (Positive / Signal Input)  
+- Pin 4 (PA7) → Electrode A (Positive / Signal Input)  
 - Pin 7 (GND) → Electrode B (Negative / Ground Reference)
 
 These two connections form a complete electrical circuit necessary for proper analog signal acquisition. Without a ground connection to Pin 7, the analog input on PA7 will receive a floating signal, resulting in unstable or zero voltage readings and unreliable behavior.
