@@ -38,12 +38,12 @@ Optionally add a 10kΩ pull-down resistor between PA7 and GND for improved signa
 - Measures differential voltage  
 - High noise immunity (0.1V threshold)  
 - Displays in microvolts (µV)
-#
+
 #
 ### Configuration 2: Amplifier Board (Advanced)
 
 Use for sensitive measurements, plant monitoring, research.
-#
+
 #
 **Amplifier Board GPIO Connections:**
 
@@ -58,7 +58,7 @@ Use for sensitive measurements, plant monitoring, research.
 - Millivolt-level sensitivity  
 - Auto offset calibration  
 - 10x sensitivity multiplier  
-#
+
 #
 ## Recommended Amplifier Circuit:
 
@@ -68,7 +68,7 @@ Use for sensitive measurements, plant monitoring, research.
 - Low noise, low drift  
 
 The amplifier board design is currently in development.
-#
+
 #
 ## Installation:
 
@@ -127,7 +127,7 @@ bash
 - Electrolyte conductivity
 - Bioelectricity demonstrations
 - Fruit/vegetable measurements
-#
+
 #
 ## Technical Specifications:
 
@@ -154,7 +154,7 @@ bash
 - ADC retries with fallback
 - NaN/infinity protection
 - Auto re-init and status messages
-#
+
 #
 ## Troubleshooting:
 
@@ -198,7 +198,7 @@ bash
   - Δ voltage detection
   - Real-time frequency mapping
   - Mode-dependent display scaling
-#
+
 #
 ## Contributing:
 
@@ -210,12 +210,12 @@ Focus areas:
 - Amplifier profile library
 - Mobile integration and export
 - Data logging tools
-#
+
 #
 ## License
 
 MIT License – open source hardware and software encouraged
-#
+
 #
 ## Safety & Disclaimers
 
