@@ -165,7 +165,7 @@ bash
 - Detection pin PA6 must pull low
 #
 **Erratic Readings**
-#
+
 - Clean and secure electrodes
 - Avoid touching during readings
 - Eliminate nearby EMI
