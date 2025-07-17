@@ -32,7 +32,7 @@ This configuration allows direct sensing of bioelectrical signals, such as those
 
 Optionally add a 10kΩ pull-down resistor between PA7 and GND for improved signal clarity. Basic shielding (e.g., foil wrapping around wires) can also help reduce noise.
 #
-#
+
 **Features:**
 
 - Measures differential voltage  
@@ -52,7 +52,7 @@ Use for sensitive measurements, plant monitoring, research.
 - Pin 4 (PA4) & Pin 5 (PA5) → Electrodes via amplifier  
 - GND → Amplifier Ground (common ground)
 #
-#
+
 **Features:**
 
 - Millivolt-level sensitivity  
@@ -70,13 +70,13 @@ Use for sensitive measurements, plant monitoring, research.
 The amplifier board design is currently in development.
 #
 #
-## Installation
+## Installation:
 
 ### Option 1: Precompiled
 
 - Download the latest `.fap` file from Releases  
 - Copy it to your Flipper's `apps/GPIO/` folder via qFlipper  
-#
+
 #
 ### Option 2: Build From Source
 
@@ -88,7 +88,7 @@ bash
 ./fbt fap_hack_the_planet
 ./fbt launch_app APPID=hack_the_planet
 #
-#
+
 ## Usage Guide
 
 1. Getting Started
@@ -111,8 +111,8 @@ bash
    - MONITORING – Active signal analysis with audio
    - ERROR – Retry/recover from ADC issues
 #
-#
-## Electrode Applications:
+
+## Electrode Applications
 
 **Plants**
 
@@ -127,6 +127,7 @@ bash
 - Electrolyte conductivity
 - Bioelectricity demonstrations
 - Fruit/vegetable measurements
+#
 #
 ## Technical Specifications:
 
