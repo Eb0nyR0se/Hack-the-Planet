@@ -1,7 +1,7 @@
 # Hack the Planet
 #
 Transform your Flipper Zero into a professional-grade bioelectrical activity monitor! This application automatically detects and adapts to various hardware configurations, providing real-time monitoring of electrical signals from plants, biological samples, and other conductive materials, accompanied by dynamic audio feedback.
-
+#
 ## Key Features
 
 - Intelligent Hardware Detection – Automatically detects amplifier boards vs direct connections  
@@ -13,11 +13,13 @@ Transform your Flipper Zero into a professional-grade bioelectrical activity mon
 - Adaptive Sensitivity – Threshold auto-adjustment based on detected hardware  
 - State Machine Architecture – Reliable operation with built-in error recovery  
 #
+#
 ## Hardware Configurations:
 
 ### Configuration 1: Direct Connection (Basic)
 
 Use for learning, experimentation, high-voltage signals.
+#
 #
 **GPIO Connections:**
 
@@ -30,15 +32,18 @@ This configuration allows direct sensing of bioelectrical signals, such as those
 
 Optionally add a 10kΩ pull-down resistor between PA7 and GND for improved signal clarity. Basic shielding (e.g., foil wrapping around wires) can also help reduce noise.
 #
+#
 **Features:**
 
 - Measures differential voltage  
 - High noise immunity (0.1V threshold)  
 - Displays in microvolts (µV)
 #
+#
 ### Configuration 2: Amplifier Board (Advanced)
 
 Use for sensitive measurements, plant monitoring, research.
+#
 #
 **Amplifier Board GPIO Connections:**
 
@@ -47,20 +52,23 @@ Use for sensitive measurements, plant monitoring, research.
 - Pin 4 (PA4) & Pin 5 (PA5) → Electrodes via amplifier  
 - GND → Amplifier Ground (common ground)
 #
+#
 **Features:**
 
 - Millivolt-level sensitivity  
 - Auto offset calibration  
 - 10x sensitivity multiplier  
 #
-## Recommended Amplifier Circuit
+#
+## Recommended Amplifier Circuit:
 
 - INA128 or AD620-based instrumentation amplifier  
 - Gain: ~100–1000x  
 - High input impedance (>1GΩ)  
 - Low noise, low drift  
-#
+
 The amplifier board design is currently in development.
+#
 #
 ## Installation
 
@@ -68,6 +76,7 @@ The amplifier board design is currently in development.
 
 - Download the latest `.fap` file from Releases  
 - Copy it to your Flipper's `apps/GPIO/` folder via qFlipper  
+#
 #
 ### Option 2: Build From Source
 
@@ -78,6 +87,7 @@ The amplifier board design is currently in development.
 bash
 ./fbt fap_hack_the_planet
 ./fbt launch_app APPID=hack_the_planet
+#
 #
 ## Usage Guide
 
@@ -100,6 +110,7 @@ bash
    - READY – Waiting for user
    - MONITORING – Active signal analysis with audio
    - ERROR – Retry/recover from ADC issues
+#
 #
 ## Electrode Applications:
 
@@ -142,6 +153,7 @@ bash
 - ADC retries with fallback
 - NaN/infinity protection
 - Auto re-init and status messages
+#
 #
 ## Troubleshooting:
 
@@ -186,7 +198,8 @@ bash
   - Real-time frequency mapping
   - Mode-dependent display scaling
 #
-## Contributing
+#
+## Contributing:
 
 I welcome pull requests and suggestions!
 
@@ -197,9 +210,11 @@ Focus areas:
 - Mobile integration and export
 - Data logging tools
 #
+#
 ## License
 
 MIT License – open source hardware and software encouraged
+#
 #
 ## Safety & Disclaimers
 
