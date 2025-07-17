@@ -20,7 +20,7 @@ Transform your Flipper Zero into a professional-grade bioelectrical activity mon
 
 Use for learning, experimentation, high-voltage signals.
 #
-#
+
 **GPIO Connections:**
 
 - Pin 2 (PA7) → Electrode A (Positive / Signal Input)  
