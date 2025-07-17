@@ -12,7 +12,7 @@ Transform your Flipper Zero into a professional-grade bioelectrical activity mon
 - Robust Error Handling – Comprehensive ADC error detection and recovery  
 - Adaptive Sensitivity – Threshold auto-adjustment based on detected hardware  
 - State Machine Architecture – Reliable operation with built-in error recovery  
-#
+
 #
 ## Hardware Configurations:
 
