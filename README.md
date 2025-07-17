@@ -182,7 +182,7 @@ bash
 - Check all GPIO cables
 - Retry via the OK button
 #
-## Scientific & Educational Uses
+## Scientific & Educational Uses:
 
 - Circadian rhythm and environmental studies
 - Plant biofeedback experiments
@@ -190,7 +190,7 @@ bash
 - Electronic circuit and ADC training
 - Citizen science and agriculture research
 #
-## Advanced Architecture
+## Advanced Architecture:
 
 - State Machine: DETECTING → CALIBRATING → READY → MONITORING → ERROR
 - Signal Engine:
@@ -212,12 +212,12 @@ Focus areas:
 - Data logging tools
 
 #
-## License
+## License:
 
 MIT License – open source hardware and software encouraged
 
 #
-## Safety & Disclaimers
+## Safety & Disclaimers:
 
 - Use low voltage only (<5V)
 - Do not damage living plants
